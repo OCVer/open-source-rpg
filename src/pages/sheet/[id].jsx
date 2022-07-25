@@ -143,6 +143,20 @@ function Sheet({
     />
   ));
 
+const hitPointsModal = useModal(({ close }) => (
+    <StatusBarModal
+      type="hp"
+      onSubmit={async newData => {
+        onHitPointsModalSubmit(newData).then(() => close());
+      }}
+      handleClose={close}
+      data={{
+        current: character.current_hit_points,
+        max: character.max_hit_points
+      }}
+    />
+  ));
+
   const diceRollModal = useModal(({ close }) => (
     <DiceRollModal
       onDiceRoll={rollData => {
